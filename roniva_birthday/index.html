@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown to Roniva's Birthday</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="countdown-container">
+        <h1>Countdown to Roniva's Birthday! 🎉</h1>
+        <div id="countdown">
+            <span id="days">00</span> :
+            <span id="hours">00</span> :
+            <span id="minutes">00</span> :
+            <span id="seconds">00</span>
+        </div>
+    </div>
+    
+    <script>
+        function updateCountdown() {
+            const targetDate = new Date("2025-02-13T00:00:00+13:00").getTime(); // New Zealand Time
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+
+            if (timeLeft <= 0) {
+                window.location.href = "birthday.html";
+                return;
+            }
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `
+                <span id="days">${days}</span> :
+                <span id="hours">${hours}</span> :
+                <span id="minutes">${minutes}</span> :
+                <span id="seconds">${seconds}</span>
+            `;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initialize immediately
+    </script>
+</body>
+</html>

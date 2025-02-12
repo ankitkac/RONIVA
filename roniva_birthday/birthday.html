@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Roniva! 🎉</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js" defer></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://ideogram.ai/assets/image/lossless/response/_6VSllLjQ5m98w1iTAEnJw') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            flex-direction: column;
+            position: relative;
+            padding: 20px;
+        }
+        .image-container {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+        .image-container img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
+        .message-container {
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            background-image: url("https://img.freepik.com/free-vector/blank-white-notepaper-design-vector_53876-161340.jpg?semt=ais_hybrid");
+            background-size: cover;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+            text-align: left;
+            line-height: 1.6;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-top: 100px;
+            text-align: center;
+            color: red;
+        }
+        .message {
+            opacity: 1;
+            white-space: pre-line;
+            overflow: hidden;
+            display: inline-block;
+            width: 0;
+            color: black;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+        }
+        @media (max-width: 600px) {
+            .image-container img {
+                width: 80px;
+                height: 80px;
+            }
+            h1 {
+                font-size: 1.5rem;
+                margin-top: 80px;
+            }
+            .message-container {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="confetti"></canvas>
+    <div class="image-container">
+        <img src="1000045280-removebg-preview.png" alt="Friendship Photo 1">
+        <img src="1000045279-removebg-preview.png" alt="Friendship Photo 2">
+    </div>
+    <div class="message-container">
+        <h1>Happy Birthday, Roniva! 🎂🎉</h1>
+        <p class="message" id="message">Dear Roniva,
+
+Happy Birthday, my dear friend! 🎉✨ Tu sirf ek dost nahi, balki meri life ka ek bahut important hissa hai. Tere bina life adhoori si lagti hai. Teri hasi meri duniya bright karti hai, aur tera support hamesha mujhe strong banata hai. Tere saath har ek moment special hota hai, chahe wo masti ho ya emotional talks.
+
+Main hamesha tere saath hoon, chahe koi bhi situation ho. Tu ek gem hai, aur tujhe har khushi milni chahiye jo tu deserve karti hai. Stay happy, stay blessed, aur hamesha aise hi amazing bani reh!
+
+Tumhara Friend RISHAV 💖</p>
+    </div>
+    
+    <script>
+        window.onload = function() {
+            const confettiSettings = { target: 'confetti', max: 150, size: 1.2, animate: true, props: ['circle', 'square', 'triangle'], colors: [[165,104,246],[230,61,135],[0,199,228],[253,214,126]] };
+            const confetti = new ConfettiGenerator(confettiSettings);
+            confetti.render();
+
+            function animateText(id, delay) {
+                let element = document.getElementById(id);
+                let text = element.innerHTML;
+                element.innerHTML = '';
+                element.style.width = 'auto';
+                let index = 0;
+                function showNextLetter() {
+                    if (index < text.length) {
+                        element.innerHTML += text.charAt(index);
+                        index++;
+                        setTimeout(showNextLetter, 50);
+                    }
+                }
+                setTimeout(showNextLetter, delay);
+            }
+            
+            animateText("message", 500);
+        };
+    </script>
+</body>
+</html>
